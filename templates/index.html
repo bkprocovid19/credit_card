@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Credit Card Fraud Detection</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,300&display=swap" rel="stylesheet">
+    <style>
+body {
+    font-family: 'Work Sans', sans-serif;
+    text-align: center;
+    background-color: #f8f9fa;
+    padding: 20px;
+    margin: 0;
+    color: #343a40;
+    background-image: url(https://scontent.fhan15-2.fna.fbcdn.net/v/t1.15752-9/393097351_732667008792651_87412262269596784_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=8cd0a2&_nc_ohc=RVMe6L1FqPQAX9gHJOd&_nc_ht=scontent.fhan15-2.fna&oh=03_AdRoJ0HygiN7b1f_fDOtH7DdKvqy8__vkjZikCSw4Utvrg&oe=659F8E1A);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+        #fraudForm {
+            max-width: 550px;
+            margin: 0 auto;
+            background-color: rgba(255, 255, 255, 0.7);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            text-align: center;
+            height: 50px;
+            color: #ffffffe6;
+            font-size: 2.3em;
+            margin-bottom: 50px;
+            width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 10px;
+    background-color: #0067f7da; 
+    margin-top: 20px;
+    font-weight: 600;
+
+
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            font-size: 1.2em;
+            color: #000000;
+            margin-bottom: 8px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid green;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 1em;
+            color: #333;
+            background-color: rgba(255, 255, 255, 0.5);
+        }
+
+        .hint {
+            font-size: 0.88em;
+            color: #2c3136;
+            text-align: left;
+            margin-top: 5px;
+        }
+
+        .btn-container {
+            display: flex;
+            justify-content: space-evenly;
+            margin-top: 20px;
+        }
+
+        button, .link {
+            background-color: #0067f7da;
+            color: #f6f3f3;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.3em;
+            margin: 0;
+            text-decoration: none;
+            font-weight: 500;
+            font-family: 'Work Sans', sans-serif;
+            display: inline-block;
+        }
+
+        button:hover, .link:hover {
+            background-color: #49b9ec9e;
+        }
+
+    #result, #error {
+    margin-top: 30px;
+    width: 370px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 5px;
+    background-color: #28a745; /* Màu xanh lá cây */
+    margin-top: 20px;
+    font-weight: 800;
+    color: #ffffff;
+    font-size: 1.4em;
+    height: auto;
+        }
+
+    #error {
+    background-color: #f43a3ad4; /* Màu đỏ */
+    width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+
+           }
+
+        img {
+            max-width: 100%;
+            border-radius: 10px;
+            margin-top: 30px;
+        }
+
+    </style>
+</head>
+<body>
+    <h2>Dự đoán gian lận giao dịch thẻ tín dụng</h2>
+    <form id="fraudForm">
+        <div class="form-group">
+            <label for="time">Thời điểm giao dịch:</label>
+            <input type="text" class="form-control" id="time" name="time" required pattern="[1-9]\d*">
+            <p class="hint">Nhập số nguyên dương, ví dụ: 111</p>
+        </div>
+        <div class="form-group">
+            <label for="source_account">Tài khoản nguồn:</label>
+            <input type="text" class="form-control" id="source_account" name="source_account" required pattern="[A-Za-z0-9]+">
+        </div>
+        <div class="form-group">
+            <label for="destination_account">Tài khoản đích:</label>
+            <input type="text" class="form-control" id="destination_account" name="destination_account" required pattern="[A-Za-z0-9]+">
+        </div>
+        <div class="form-group">
+            <label for="transaction_amount">Lượng tiền giao dịch:</label>
+            <input type="text" class="form-control" id="transaction_amount" name="transaction_amount" required pattern="[0-9]+(\.[0-9]+)?">
+            <p class="hint">Nhập số thực dương, ví dụ: 500.50</p>
+        </div>
+        <div class="form-group">
+            <label for="location">Địa điểm giao dịch:</label>
+            <input type="text" class="form-control" id="location" name="location" required>
+        </div>
+        <div class="form-group">
+            <label for="transaction_type">Kiểu giao dịch:</label>
+            <input type="text" class="form-control" id="transaction_type" name="transaction_type" required>
+        </div>
+        <!-- Các trường khác tương tự -->
+        <div class="btn-container">
+            <button type="button" onclick="detectFraud()">Dự đoán gian lận</button>
+            <a href="/prediction_history" class="link" id="historyLink">Lịch sử dự đoán</a>
+        </div>
+    </form>
+    <p id="result"></p>
+    <p id="error"></p>
+    <script>
+        function detectFraud() {
+            var time = document.getElementById("time").value;
+            var sourceAccount = document.getElementById("source_account").value;
+            var destinationAccount = document.getElementById("destination_account").value;
+            var transactionAmount = document.getElementById("transaction_amount").value;
+            var location = document.getElementById("location").value;
+            var transactionType = document.getElementById("transaction_type").value;
+
+            // Kiểm tra trạng thái của form
+            if (!document.getElementById("fraudForm").checkValidity()) {
+                document.getElementById("result").innerText = "";
+                document.getElementById("error").innerText = "Cảnh báo: Nhập thiếu hoặc sai định dạng các trường dữ liệu";
+                return;
+            }
+
+            var features = {
+                'time': time,
+                'source_account': sourceAccount,
+                'destination_account': destinationAccount,
+                'transaction_amount': transactionAmount,
+                'location': location,
+                'transaction_type': transactionType
+            };
+
+            fetch('/detect_fraud_knn', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: Object.entries(features).map(([key, value]) => `${key}=${value}`).join('&')
+            })
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById("result").innerText = "Kết quả dự đoán: " + data.result;
+                    document.getElementById("error").innerText = "";
+                })
+                .catch(error => {
+                    document.getElementById("result").innerText = "";
+                    document.getElementById("error").innerText = "Lỗi: " + error.message;
+                });
+        }
+    </script>
+</body>
+</html>
