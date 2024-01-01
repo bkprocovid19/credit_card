@@ -7,33 +7,41 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,300&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/ae805c892d.js" crossorigin="anonymous"></script>
     <style>
-        body {
-            font-family: 'Work Sans', sans-serif; /* Use the same font as in index.html */
+                body {
+            font-family: 'Work Sans', sans-serif;
             text-align: center;
-            background-color: #f8f9fa; /* Use the same background color as in index.html */
+            background-color: #f8f9fa;
             padding: 20px;
             margin: 0;
-            background-image: url(https://scontent.fhan15-2.fna.fbcdn.net/v/t1.15752-9/385531240_1046753803042831_6949497959710013372_n.png?_nc_cat=103&ccb=1-7&_nc_sid=8cd0a2&_nc_ohc=BT2h29dulVYAX8ZYx6r&_nc_ht=scontent.fhan15-2.fna&oh=03_AdRSn4pbBtmOkmFcoIJEqBFTCRVRo9AFuYVQ-xiWcPwU-g&oe=65A09DE8);
-            background-repeat: no-repeat;
+            background-image: url(https://scontent.fhph1-3.fna.fbcdn.net/v/t1.15752-9/413447378_1404068620462427_7048564838130935125_n.png?_nc_cat=106&ccb=1-7&_nc_sid=8cd0a2&_nc_eui2=AeEx2KYuQfxZ3A8kq3xQUrkYCUF7uVtkvRMJQXu5W2S9E9YGGv2CEgCNjSLBaCY8SwDZb6i9FOn4UoIGbVFZ-SBX&_nc_ohc=N_WYkmQhM-0AX9qchnh&_nc_ht=scontent.fhph1-3.fna&oh=03_AdT5lb3K_WGrfJgthyvNzaJmOSdGXGzpNdX3oH6p7qk5fw&oe=65B9A905);
+            background-repeat:repeat-y;
             background-size: cover;
         }
 
         #historyTable {
-    max-width: 1000px;
-    margin: 0 auto;
-    background-color: rgba(255, 255, 255, 0.797);
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    overflow: auto;
-}
+            width: 940px;
+            margin: 0 auto;
+            background-color: rgba(255, 255, 255, 0.861);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden; /* Hide the overflow from the container */
+        }
 
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-}
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            /*table-layout: fixed; /* Ensure that table layout is fixed */
+        }
+
+        tbody {
+            max-height: 600px; /* Set a maximum height for the tbody to enable scrolling */
+            overflow-y: auto; /* Enable vertical scrolling */
+            display: block; /* Allow the tbody to have its own block formatting context */
+        }
 
         th, td {
             border: 1.5px solid #ffffff85;
@@ -53,20 +61,75 @@ table {
             margin-right: auto;
             margin-top: 20px;
             font-weight: 600;
-    color: #fff; /* Màu chữ */
-    text-shadow: 
-    -1.15px -1.15px 0 #000,  
-    1.15px -1.15px 0 #000,
-    -1.15px 1.15px 0 #000,
-    1.15px 1.15px 0 #000; /* Điều chỉnh vị trí và màu để tạo hiệu ứng viền */
-
-
+            color: #fff;
+            text-shadow: 
+                -1.15px -1.15px 0 #000,  
+                1.15px -1.15px 0 #000,
+                -1.15px 1.15px 0 #000,
+                1.15px 1.15px 0 #000;
         }
 
         th {
+            position: -webkit-sticky;
             background-color: #0067f7da;
             color: white;
             font-size: 20px;
+            text-align: center;
+        }
+        footer {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            background-color: #343a40;
+            color: #ffffff;
+            padding: 30px 0;
+            box-sizing: border-box;
+            height: 190px;
+        }
+
+        .footer-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-info,
+        .footer-links {
+            flex: 1;
+            text-align: center;
+        }
+
+        .footer-links {
+            text-align: center;
+        }
+
+        .footer-info h3 {
+            margin-bottom: 20px;
+        }
+
+        .footer-info p {
+            margin: 10px 0;
+        }
+
+        .footer-links a {
+            color: #ffffff;
+            text-decoration: none;
+            margin: 0 10px;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #28a745;
+        }
+
+        .copyright {
+            margin-top: 20px;
+            font-size: 14px;
+            text-align: center;
         }
     </style>
 </head>
@@ -91,6 +154,23 @@ table {
             {% endfor %}
         </table>
     </div>
+    <footer>
+        <div class="footer-container">
+            <div class="footer-info">
+                <h3>Liên hệ</h3>
+                <p><i class="fa-solid fa-envelope"></i> Email: deptrainguyen984@gmail.com</p>
+                <p><i class="fa-solid fa-phone"></i> Điện thoại: 0338599051</p>
+            </div>
+            <div class="footer-links">
+                <h3>Liên kết</h3>
+                <a href="https://github.com/bkprocovid19/credit_card"><i class="fa-brands fa-github"></i> Github</a>
+                <a href="https://www.facebook.com/chuthienhai"><i class="fa-brands fa-facebook"></i> Hỗ trợ</a>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2024 Group_8. All rights reserved.
+        </div>
+    </footer>
 
     <script>
         // Hàm chuyển đổi thời gian từ UTC sang múi giờ Việt Nam
