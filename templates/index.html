@@ -328,7 +328,7 @@
                 .then(response => response.json())
                 .then(data => {
                     // Display result in a popup
-                    showResultModal("Kết quả dự đoán: " + data.result);
+                    showResultModal("Kết quả dự đoán: " + data.result + "<br>" + "<br>" + data.fraud_probability);
                 })
                 .catch(error => {
                     // Display error in a popup

@@ -9,64 +9,63 @@
     <link href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,300&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/ae805c892d.js" crossorigin="anonymous"></script>
     <style>
-                body {
+        body {
             font-family: 'Work Sans', sans-serif;
             text-align: center;
             background-color: #f8f9fa;
             padding: 20px;
             margin: 0;
             background-image: url(https://scontent.fhph1-3.fna.fbcdn.net/v/t1.15752-9/413447378_1404068620462427_7048564838130935125_n.png?_nc_cat=106&ccb=1-7&_nc_sid=8cd0a2&_nc_eui2=AeEx2KYuQfxZ3A8kq3xQUrkYCUF7uVtkvRMJQXu5W2S9E9YGGv2CEgCNjSLBaCY8SwDZb6i9FOn4UoIGbVFZ-SBX&_nc_ohc=N_WYkmQhM-0AX9qchnh&_nc_ht=scontent.fhph1-3.fna&oh=03_AdT5lb3K_WGrfJgthyvNzaJmOSdGXGzpNdX3oH6p7qk5fw&oe=65B9A905);
-            background-repeat:repeat-y;
+            background-repeat: repeat-y;
             background-size: cover;
         }
 
+        h2 {
+            text-align: center;
+            font-size: 2.7em;
+            margin-bottom: 50px;
+            width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 20px;
+            font-weight: 600;
+            color: #ffffff;
+            text-shadow:
+                -2.15px -2.15px 0 #000,
+                2.15px -2.15px 0 #000,
+                -1.15px 1.15px 0 #000,
+                1.15px 1.15px 0 #000;
+        }
+
         #historyTable {
-            width: 940px;
+            width: 48%;
             margin: 0 auto;
             background-color: rgba(255, 255, 255, 0.861);
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            overflow: hidden; /* Hide the overflow from the container */
+            overflow: hidden;
         }
 
         table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 20px;
-            /*table-layout: fixed; /* Ensure that table layout is fixed */
+            margin-top: 5px;
         }
 
         tbody {
-            max-height: 600px; /* Set a maximum height for the tbody to enable scrolling */
-            overflow-y: auto; /* Enable vertical scrolling */
-            display: block; /* Allow the tbody to have its own block formatting context */
+            max-height: 600px;
+            overflow-y: auto;
+            display: block;
         }
 
         th, td {
+            /*width: 20%;*/
             border: 1.5px solid #ffffff85;
             padding: 12px;
             text-align: left;
             font-size: 18px;
             color: black;
-        }
-
-        h2 {
-            text-align: center;
-            height: 50px;
-            font-size: 2.7em;
-            margin-bottom: 50px;
-            width: 400px;
-            margin-left: auto;
-            margin-right: auto;
-            margin-top: 20px;
-            font-weight: 600;
-            color: #fff;
-            text-shadow: 
-                -1.15px -1.15px 0 #000,  
-                1.15px -1.15px 0 #000,
-                -1.15px 1.15px 0 #000,
-                1.15px 1.15px 0 #000;
         }
 
         th {
@@ -76,6 +75,7 @@
             font-size: 20px;
             text-align: center;
         }
+
         footer {
             position: absolute;
             bottom: 0;
